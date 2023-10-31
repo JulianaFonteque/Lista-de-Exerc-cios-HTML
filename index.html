@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minha Página da Web</title>
+</head>
+<body>
+    <p style="font-size: 24px; font-weight: bold;">Informações do Aluno</p>
+
+<p><strong>Nome:</strong> Juliana Fonteque Pistori</p>
+<p><strong>Turma:</strong> 2022</p>
+<p style="font-size: 24px; font-weight: bold;">Soluções de Exercício</p>
+<p>1 - Escreva um programa que mostre a soma de todos os divisores de um dado número X. Um
+    divisor é qualquer número menor que X cujo resto da divisão é igual a 0.
+    Exemplo: Para X = 8, o resultado é 7, pois 7 = 1 + 2 + 4.</p>
+
+    <textarea rows="10" cols="90">
+        function somaDivisores(){
+            let number = prompt("Digite um número:");
+            let result = 0;
+            let operation = '';
+            if(!Number(number)){
+                alert("Digite um número válido");
+            }
+            else{
+                for(let i = 1; i < number; i++) {
+                    if(number % i == 0){
+                        result += i;
+                        operation += i + "+";
+                    }
+                }
+                operation = operation.slice(0, -1); // Remover o último caractere "+"
+                alert("O resultado é: " + operation + "=" + result);
+            }
+        }
+
+        </textarea>
+
+        <button onclick="somaDivisores()">Calcular Soma de Divisores</button>
+
+
+
+</body>
+</html>
+<br>
+<br>
+<br>
+<p>2 - Considere dois pontos no espaço 2D com as seguintes coordenadas: A(x 1 , y 1 ) e B(x 2 ,y 2 ). A
+    distância euclidiana D, entre estes pontos é dada pela seguinte fórmula: </p>
+    <img src="C:\Users\julia\OneDrive\Imagens\distanciaeuclidiana.png.png" width="200" alt="Imagem Redimensionada (proporção mantida)"> 
+<br>
+<br>    
+<br>    
+    <textarea rows="10" cols="90">
+        function calcularDistanciaEuclidiana() {
+            let x1 = parseFloat(prompt("Digite o valor da coordenada X do ponto A:"));
+            let y1 = parseFloat(prompt("Digite o valor da coordenada Y do ponto A:"));
+            let x2 = parseFloat(prompt("Digite o valor da coordenada X do ponto B:"));
+            let y2 = parseFloat(prompt("Digite o valor da coordenada Y do ponto B:"));
+
+            if (!isNaN(x1) && !isNaN(y1) && !isNaN(x2) && !isNaN(y2)) {
+                let result = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+                alert("A distância euclidiana entre os dois pontos é: " + result);
+            } else {
+                alert("Digite números válidos.");
+            }
+        }
+        
+        
+
+        </textarea>
+
+        <button onclick="calcularDistanciaEuclidiana()">Calcular Distância Euclidiana</button>
+
+    </body>
+    </html>
+    <br>
+    <br>
+    <br>
+    <p>3 - Dada uma frase de entrada por um usuário, faça um programa que conte a ocorrência de
+        cada palavra nesta frase. O programa não deve distinguir letras maiúsculas e minúsculas: </p>
+
+    <p>Exemplo: “Faça chuva ou faça sol.”</p>
+    <p>Resultado: faça (2), chuva (1), ou, (1), sol (1)</p>
+
+    <br>
+   
+        <textarea rows="10" cols="90">
+            function contarPalavras(){
+                let frase = prompt("Digite uma frase").toLowerCase();
+                let palavras = frase.split(" ");
+                let palavrasUnicas = [];
+                let contagem = [];
+                let result = '';
+                for(let i = 0; i < palavras.length; i++){
+                    if(palavrasUnicas.includes(palavras[i])){
+                        contagem[palavrasUnicas.indexOf(palavras[i])] +=1;
+                    }
+                
+                else{
+                    palavrasUnicas.push(palavras[i]);
+                    contagem.push(1);
+                }
+            }
+            for(let i = 0; i< palavrasUnicas.length; i++){
+                result += palavrasUnicas[i] + ' (' + contagem[i] + '), ';
+            }
+            
+            
+            }
+            
+            
+            
+            
+    
+            </textarea>
+    
+            <button onclick="contarPalavras()">Contar Palavras</button>
+
+
+        </body>
+        </html>
+        <br>
+        <br>
+        <br>
+        <p>4 - Faça um programa que leia uma string de números como entrada de um usuário que
+            representa uma matriz e diga qual dimensão dela (quantidade de linhas e colunas). As linhas
+            da matriz são separadas por um caractere de ponto e vírgula ‘;’e as colunas são separadas por
+            um espaço vazio, como no exemplo: </p>
+    
+        <p>Entrada: 1 4 6 8; 3 5 6 7; 1 3 2 4</p>
+        <p>Resultado: Essa é uma matriz de dimensão 3 x 4.</p>
+    
+        <br>
+       
+            <textarea rows="10" cols="90">
+
+                function determinarDimensaoMatriz() {
+                    const entrada = prompt("Digite a matriz separando as linhas com ';' e as colunas com espaço em branco (por exemplo, '1 4 6 8; 3 5 6 7; 1 3 2 4'):");
+                
+                    // Dividir as linhas da matriz com base no caractere ';'
+                    const linhas = entrada.split(';');
+                
+                    // Determinar o número de linhas e colunas
+                    const numLinhas = linhas.length;
+                    const numColunas = linhas[0].split(' ').length;
+                
+                    const resultado = `Essa é uma matriz de dimensão ${numLinhas} x ${numColunas}.`;
+                
+                    alert(resultado);
+                }
+                
+                
+                
+        
+                </textarea>
+        
+                <button onclick="determinarDimensaoMatriz()">Determinar as dimensões da matiz</button>
+
+
+
+            </body>
+            </html>
+            <br>
+            <br>
+            <br>
+            <p>5 - Dado um número inteiro positivo N como entrada de um usuário, escreva um programa
+                que mostre os primeiros N números da sequência de Fibonacci. (A sequência de Fibonacci é
+                iniciada por 0 e 1, e o próximo número é sempre a soma dos dois últimos). Exemplo: </p>
+        
+            <p>Entrada: 8</p>
+            <p>Resultado: 0, 1, 1, 2, 3, 5, 8, 13</p>
+        
+            <br>
+           
+                <textarea rows="10" cols="90">
+
+                    function calcularFibonacci() {
+                        const n = parseInt(prompt("Digite um número inteiro positivo N:"));
+                    
+                        if (!isNaN(n) && n >= 0) {
+                            let resultado = "Resultado: ";
+                            let a = 0, b = 1;
+                    
+                            for (let i = 0; i < n; i++) {
+                                resultado += a + (i < n - 1 ? ", " : "");
+                                const temp = a + b;
+                                a = b;
+                                b = temp;
+                            }
+                    
+                            alert(resultado);
+                        } else {
+                            alert("Digite um número inteiro positivo válido.");
+                        }
+                    }
+                    
+                    
+    
+                   
+                    
+                    
+                    
+            
+                    </textarea>
+            
+                    <button onclick="calcularFibonacci()">Mostrar números Fibonacci</button>
+            
+        
+
+
+
+    
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+
